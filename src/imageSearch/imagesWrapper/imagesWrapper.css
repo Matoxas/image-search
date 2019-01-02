@@ -1,0 +1,13 @@
+.images-wrapper {
+  margin: -5px !important;
+  min-height: 100vh;
+}
+
+.image-wrapper {
+  height: 200px;
+  padding: 0px !important;
+}
+
+.image-spacing {
+  padding: 5px !important;
+}

@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import ImageSearch from "./imageSearch/imageSearch";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-       <h2>hello</h2>
+        <ImageSearch />
       </div>
     );
   }
