@@ -10,7 +10,7 @@ const imageBackground = src => ({
 
 const imagesWrapper = props => {
   return (
-    <div className="row images-wrapper">
+    <div className={"row images-wrapper " + props.className}>
       {props.images.map((image, index) => {
         return (
           <div key={index} className="col-12 col-sm-6 col-md-4 image-spacing">

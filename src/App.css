@@ -15,4 +15,12 @@ code {
     monospace;
 }
 
+.page-link {
+  color: #333;
+}
+
+.page-link:hover {
+  color: black;
+}
+
 /* END OF APP CSS */
