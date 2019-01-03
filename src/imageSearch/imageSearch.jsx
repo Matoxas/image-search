@@ -110,7 +110,7 @@ class ImageSearch extends Component {
     return (
       <div className="container imageSearch">
         <div className="row mt-4">
-          <div className="col-12">
+          <div className="col-12 ">
             <SearchBar
               searchInput={this.state.searchInput}
               handleInputChange={this.handleInputChange}
@@ -120,7 +120,7 @@ class ImageSearch extends Component {
             />
           </div>
         </div>
-        <div className="row mt-3">
+        <div className="row mt-2">
           <div className="col-md-9">
             <ImagesWrapper
               page={this.state.page}
@@ -138,7 +138,7 @@ class ImageSearch extends Component {
               />
             )}
           </div>
-          <div className="col-md-3">
+          <div className="col-md-3 mb-2 order-first order-md-12">
             <SearchHistory
               removeSaved={this.removeSaved}
               handleSavedClick={this.handleSavedClick}

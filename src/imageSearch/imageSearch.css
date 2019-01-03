@@ -20,6 +20,7 @@
   justify-content: space-between;
   align-items: center;
   border: none;
+  min-width: 120px;
 }
 
 .searchHistory > .list-group-item:hover {
@@ -37,4 +38,15 @@
   text-align: center;
   color: white;
   background-color: gray;
+}
+
+@media (max-width: 991.98px) {
+  .searchHistory {
+    flex-direction: row !important;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0px; /* remove scrollbar space */
+    background: transparent; /* optional: just make scrollbar invisible */
+  }
 }
