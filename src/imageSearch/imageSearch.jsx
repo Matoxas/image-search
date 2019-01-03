@@ -95,8 +95,7 @@ class ImageSearch extends Component {
   };
 
   handleSearchSubmit = () => {
-    this.setState({ page: 1 });
-    this.handleImagesFetch();
+    this.setState({ page: 1 }, this.handleImagesFetch);
   };
 
   handleImagesFetch = () => {
