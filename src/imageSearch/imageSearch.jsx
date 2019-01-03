@@ -130,7 +130,7 @@ class ImageSearch extends Component {
             />
             {this.state.totalPages > 1 && !this.state.loading && (
               <Pagination
-                className={"mb-4"}
+                className={"mb-4 mt-2"}
                 page={this.state.page}
                 pageUp={this.handlePageUp}
                 pageDown={this.handlePageDown}

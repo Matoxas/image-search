@@ -12,7 +12,7 @@ const imagesWrapper = props => {
   if (props.loading) {
     return (
       <div className="row justify-content-center">
-        <img src="/three-dots.svg" alt="loading" />
+        <img src="./three-dots.svg" alt="loading" />
       </div>
     );
   }

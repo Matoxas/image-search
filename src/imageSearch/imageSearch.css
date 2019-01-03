@@ -20,7 +20,7 @@
   justify-content: space-between;
   align-items: center;
   border: none;
-  min-width: 120px;
+  min-width: 150px;
 }
 
 .searchHistory > .list-group-item:hover {
