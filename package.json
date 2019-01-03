@@ -2,7 +2,7 @@
   "name": "image-search",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://matoxas.github.io",
+  "homepage": "https://matoxas.github.io/image-search",
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.2.1",
