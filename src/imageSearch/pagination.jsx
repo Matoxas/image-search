@@ -14,14 +14,16 @@ const pagination = props => {
         </li>
         <li
           onClick={props.pageDown}
-          className={`${props.page <= 1 ? "disabled" : ""} page-item`}
+          className={`${
+            props.page <= 1 ? "disabled" : ""
+          } page-item d-none d-sm-block`}
         >
           <div className="page-link" href="#">
             {props.page - 1}
           </div>
         </li>
         <li className="page-item disabled">
-          <div className="page-link" href="#">
+          <div className="page-link active" href="#">
             {props.page}
           </div>
         </li>
@@ -29,7 +31,7 @@ const pagination = props => {
           onClick={props.pageUp}
           className={`${
             props.page < props.totalPages ? "" : "disabled"
-          } page-item`}
+          } page-item d-none d-sm-block`}
         >
           <div className="page-link" href="#">
             {props.page + 1}

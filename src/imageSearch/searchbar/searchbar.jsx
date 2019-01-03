@@ -8,12 +8,14 @@ const SearchBar = props => {
         <div className="col-12 col-md-9">
           <input
             onChange={props.handleInputChange}
-            className="form-control form-control-lg form-control-borderless"
+            onKeyPress={props.handleKeyPress}
+            value={props.searchInput}
+            className="form-control form-control-lg mb-2 form-control-borderless"
             type="search"
             placeholder="Search input"
           />
         </div>
-        <div className="col-12 col-md-3">
+        <div className="col-12 mb-2 col-md-3 searchbarButtons">
           <button
             onClick={props.handleSubmit}
             className="btn btn-lg btn-light"
@@ -21,7 +23,11 @@ const SearchBar = props => {
           >
             Search
           </button>
-          <button className="btn btn-lg btn-light ml-2" type="button">
+          <button
+            onClick={props.addToSaved}
+            className="btn btn-lg btn-light ml-2"
+            type="button"
+          >
             Save
           </button>
         </div>

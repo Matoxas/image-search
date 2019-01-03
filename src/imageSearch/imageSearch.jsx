@@ -3,6 +3,7 @@ import SearchBar from "./searchbar/searchbar";
 import ImagesWrapper from "./imagesWrapper/imagesWrapper";
 import { imageFetch } from "./imageFetch";
 import Pagination from "./pagination";
+import SearchHistory from "./searchHistory";
 import "./imageSearch.css";
 
 class ImageSearch extends Component {
@@ -11,6 +12,7 @@ class ImageSearch extends Component {
     this.state = {
       loading: false,
       searchInput: "",
+      savedInputs: [],
       images: [],
       page: 1,
       totalPages: 1
@@ -21,6 +23,36 @@ class ImageSearch extends Component {
     this.setState({
       searchInput: e.target.value
     });
+  };
+
+  addToSaved = () => {
+    const { searchInput: item } = this.state;
+    if (item.length > 0) {
+      const filteredItems = this.state.savedInputs.filter(
+        input => input.toLowerCase() !== item.toLowerCase()
+      );
+      const updatedItems = [item, ...filteredItems];
+      this.setState({
+        savedInputs: updatedItems
+      });
+    }
+  };
+
+  removeSaved = (e, item) => {
+    e.preventDefault();
+    const updatedItems = this.state.savedInputs.filter(input => input !== item);
+    this.setState({
+      savedInputs: updatedItems
+    });
+  };
+
+  handleSavedClick = item => {
+    this.setState(
+      {
+        searchInput: item
+      },
+      this.handleSearchSubmit
+    );
   };
 
   handlePageUp = e => {
@@ -56,6 +88,12 @@ class ImageSearch extends Component {
     });
   };
 
+  handleKeyPress = e => {
+    if (e.key === "Enter") {
+      this.handleSearchSubmit();
+    }
+  };
+
   handleSearchSubmit = () => {
     this.setState({ page: 1 });
     this.handleImagesFetch();
@@ -76,8 +114,11 @@ class ImageSearch extends Component {
         <div className="row mt-4">
           <div className="col-12">
             <SearchBar
+              searchInput={this.state.searchInput}
               handleInputChange={this.handleInputChange}
+              handleKeyPress={this.handleKeyPress}
               handleSubmit={this.handleSearchSubmit}
+              addToSaved={this.addToSaved}
             />
           </div>
         </div>
@@ -86,17 +127,24 @@ class ImageSearch extends Component {
             <ImagesWrapper
               loading={this.state.loading}
               images={this.state.images}
-              className={"mb-3"}
+              className={"mb-2"}
             />
             {this.state.totalPages > 1 && (
               <Pagination
-                className={"mb-3"}
+                className={"mb-4"}
                 page={this.state.page}
                 pageUp={this.handlePageUp}
                 pageDown={this.handlePageDown}
                 totalPages={this.state.totalPages}
               />
             )}
+          </div>
+          <div className="col-md-3">
+            <SearchHistory
+              removeSaved={this.removeSaved}
+              handleSavedClick={this.handleSavedClick}
+              savedInputs={this.state.savedInputs}
+            />
           </div>
         </div>
       </div>
