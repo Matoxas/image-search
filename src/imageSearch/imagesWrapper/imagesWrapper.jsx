@@ -9,6 +9,21 @@ const imageBackground = src => ({
 });
 
 const imagesWrapper = props => {
+  if (props.loading) {
+    return (
+      <div className="row justify-content-center">
+        <img src="/three-dots.svg" alt="loading" />
+      </div>
+    );
+  }
+
+  if (props.images.length === 0 && props.page !== 0) {
+    return (
+      <div className="row justify-content-center">
+        <p>Nothing to show. Try different search.</p>
+      </div>
+    );
+  }
   return (
     <div className={"row images-wrapper " + props.className}>
       {props.images.map((image, index) => {

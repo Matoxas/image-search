@@ -14,7 +14,7 @@ class ImageSearch extends Component {
       searchInput: "",
       savedInputs: [],
       images: [],
-      page: 1,
+      page: 0,
       totalPages: 1
     };
   }
@@ -101,11 +101,10 @@ class ImageSearch extends Component {
 
   handleImagesFetch = () => {
     this.setLoading(true);
-    imageFetch(this.state.searchInput, this.state.page, this.setImages).then(
-      () => {
-        this.setLoading(false);
-      }
-    );
+    const modifiedInput = this.state.searchInput.replace(" ", "+");
+    imageFetch(modifiedInput, this.state.page, this.setImages).then(() => {
+      this.setLoading(false);
+    });
   };
 
   render() {
@@ -125,11 +124,12 @@ class ImageSearch extends Component {
         <div className="row mt-3">
           <div className="col-md-9">
             <ImagesWrapper
+              page={this.state.page}
               loading={this.state.loading}
               images={this.state.images}
               className={"mb-2"}
             />
-            {this.state.totalPages > 1 && (
+            {this.state.totalPages > 1 && !this.state.loading && (
               <Pagination
                 className={"mb-4"}
                 page={this.state.page}
