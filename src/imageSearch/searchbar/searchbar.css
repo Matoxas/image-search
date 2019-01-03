@@ -1,7 +1,0 @@
-.searchbarButtons {
-  display: flex;
-}
-
-.searchbarButtons > * {
-  flex-grow: 1;
-}
