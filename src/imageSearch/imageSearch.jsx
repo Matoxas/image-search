@@ -12,7 +12,6 @@ class ImageSearch extends Component {
     this.state = {
       loading: false,
       searchInput: "",
-      savedInputs: [],
       images: [],
       page: 0,
       totalPages: 1
@@ -22,27 +21,6 @@ class ImageSearch extends Component {
   handleInputChange = e => {
     this.setState({
       searchInput: e.target.value
-    });
-  };
-
-  addToSaved = () => {
-    const { searchInput: item } = this.state;
-    if (item.length > 0) {
-      const filteredItems = this.state.savedInputs.filter(
-        input => input.toLowerCase() !== item.toLowerCase()
-      );
-      const updatedItems = [item, ...filteredItems];
-      this.setState({
-        savedInputs: updatedItems
-      });
-    }
-  };
-
-  removeSaved = (e, item) => {
-    e.preventDefault();
-    const updatedItems = this.state.savedInputs.filter(input => input !== item);
-    this.setState({
-      savedInputs: updatedItems
     });
   };
 
@@ -140,9 +118,8 @@ class ImageSearch extends Component {
           </div>
           <div className="col-md-3 mb-2 order-first order-md-12">
             <SearchHistory
-              removeSaved={this.removeSaved}
+              searchInput={this.state.searchInput}
               handleSavedClick={this.handleSavedClick}
-              savedInputs={this.state.savedInputs}
             />
           </div>
         </div>
